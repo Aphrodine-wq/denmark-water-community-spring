@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { org, quickActions, waterQuality } from "@/lib/content";
+import { org, quickActions, waterQuality, rates, alertNotice } from "@/lib/content";
 import {
   PhoneIcon,
   MapPinIcon,
@@ -15,6 +15,7 @@ export const metadata = { title: `${org.name} — Pay your water bill online` };
 const nav = [
   { label: "Pay Bill", href: "/pay" },
   { label: "Services", href: "#services" },
+  { label: "Rates", href: "#rates" },
   { label: "Water Quality", href: "#quality" },
   { label: "Contact", href: "#contact" },
 ];
@@ -22,6 +23,15 @@ const nav = [
 export default function CommunitySpringHome() {
   return (
     <div className="min-h-screen bg-amber-50 text-stone-700">
+      {/* Service notice */}
+      {alertNotice.active && (
+        <div className="bg-green-800 text-green-50">
+          <div className="mx-auto flex max-w-6xl items-start gap-3 px-6 py-2.5 text-sm">
+            <span className="mt-0.5 rounded-full bg-green-700 px-3 py-0.5 text-xs font-semibold">{alertNotice.label}</span>
+            <p className="text-green-100">{alertNotice.message}</p>
+          </div>
+        </div>
+      )}
       {/* Utility bar */}
       <div className="hidden bg-green-800 text-green-100 md:block">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2 text-xs">
@@ -121,6 +131,34 @@ export default function CommunitySpringHome() {
                   </div>
                 ))}
               </dl>
+            </div>
+          </div>
+        </section>
+
+        {/* Rates */}
+        <section id="rates" className="py-16">
+          <div className="mx-auto max-w-4xl px-6">
+            <p className="text-sm font-semibold uppercase tracking-wide text-green-700">Billing</p>
+            <h2 className="mt-1 font-serif text-3xl font-semibold tracking-tight text-stone-900 md:text-4xl">Rates &amp; fees</h2>
+            <div className="mt-8 overflow-hidden rounded-3xl border border-amber-200 bg-white">
+              <table className="w-full text-left text-sm">
+                <thead className="bg-lime-50 text-stone-500">
+                  <tr>
+                    <th className="px-5 py-3.5 font-semibold">Charge</th>
+                    <th className="hidden px-5 py-3.5 font-semibold sm:table-cell">Detail</th>
+                    <th className="px-5 py-3.5 text-right font-semibold">Amount</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-amber-100">
+                  {rates.map((r) => (
+                    <tr key={r.label}>
+                      <td className="px-5 py-3.5 font-medium text-stone-800">{r.label}</td>
+                      <td className="hidden px-5 py-3.5 text-stone-500 sm:table-cell">{r.detail}</td>
+                      <td className="px-5 py-3.5 text-right font-semibold text-green-700">{r.amount}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
