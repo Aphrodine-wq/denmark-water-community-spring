@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { org, quickActions, waterQuality } from "@/lib/content";
 import {
-  DropletIcon,
   PhoneIcon,
   MapPinIcon,
   ClockIcon,
   ArrowRightIcon,
   quickActionIcon,
 } from "@/components/icons";
+
+const actionHref: Record<string, string> = { pay: "/pay", leak: "/report-leak", service: "/start-stop" };
 
 export const metadata = { title: `${org.name} — Pay your water bill online` };
 
@@ -35,12 +36,7 @@ export default function CommunitySpringHome() {
       {/* Header */}
       <header className="sticky top-0 z-30 border-b border-amber-200/70 bg-amber-50/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-green-700 text-white">
-              <DropletIcon className="h-6 w-6" />
-            </span>
-            <span className="font-serif text-lg font-semibold text-stone-900">{org.name}</span>
-          </Link>
+          <Link href="/" className="font-serif text-xl font-semibold text-stone-900">{org.name}</Link>
           <nav className="hidden items-center gap-8 lg:flex">
             {nav.map((n) => (
               <a key={n.label} href={n.href} className="text-sm font-semibold text-stone-600 transition hover:text-green-700">
@@ -78,9 +74,9 @@ export default function CommunitySpringHome() {
                 >
                   Pay My Bill <ArrowRightIcon className="h-6 w-6" />
                 </Link>
-                <a href="#contact" className="inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-7 py-5 text-base font-semibold text-white transition hover:bg-white/10">
+                <Link href="/report-leak" className="inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-7 py-5 text-base font-semibold text-white transition hover:bg-white/10">
                   Report a Leak
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -91,7 +87,7 @@ export default function CommunitySpringHome() {
           <div className="grid gap-6 md:grid-cols-3">
             {quickActions.map((a) => {
               const Icon = quickActionIcon[a.key as keyof typeof quickActionIcon];
-              const href = a.href === "pay" ? "/pay" : "#contact";
+              const href = actionHref[a.key] ?? "#contact";
               return (
                 <Link key={a.key} href={href} className="group flex items-start gap-4 rounded-3xl border border-amber-200 bg-white p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/5">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-lime-100 text-green-700 transition group-hover:bg-green-700 group-hover:text-white">

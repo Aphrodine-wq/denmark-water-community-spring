@@ -5,7 +5,7 @@ import Link from "next/link";
 import { org } from "@/lib/content";
 import { DEMO_ACCOUNT_NUMBER, DEMO_LAST_NAME } from "@/lib/mockAccounts";
 import { usePortalFlow, formatCurrency } from "@/lib/usePortalFlow";
-import { DropletIcon, CheckIcon, CardIcon, ArrowRightIcon, ShieldIcon } from "@/components/icons";
+import { CheckIcon, CardIcon, ArrowRightIcon, ShieldIcon } from "@/components/icons";
 
 // CONCEPT 3 — "Community Spring" payment portal mock.
 export default function CommunitySpringPortal() {
@@ -17,12 +17,7 @@ export default function CommunitySpringPortal() {
     <div className="min-h-screen bg-amber-50 text-stone-700">
       <header className="border-b border-amber-200 bg-white/70">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-3.5">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-700 text-white">
-              <DropletIcon className="h-5 w-5" />
-            </span>
-            <span className="font-serif text-sm font-semibold text-stone-900">{org.name}</span>
-          </Link>
+          <Link href="/" className="font-serif text-sm font-semibold text-stone-900">{org.name}</Link>
           <Link href="/" className="text-sm text-stone-500 hover:text-green-700">← Back to site</Link>
         </div>
       </header>
