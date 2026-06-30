@@ -79,7 +79,8 @@ export default function CommunitySpringHome() {
         {/* Hero */}
         <section className="relative isolate overflow-hidden">
           <img src="/images/hero.jpg" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-green-950/80 via-green-900/55 to-transparent" />
+          {/* Scrim wraps the text (an ancestor) so contrast holds over the photo and in forced-colors mode. */}
+          <div className="bg-gradient-to-r from-green-950/95 via-green-900/90 to-green-950/45">
           <div className="mx-auto max-w-6xl px-6 py-28 md:py-40">
             <div className="max-w-xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-lime-200">Your neighbors since {org.established}</p>
@@ -102,6 +103,7 @@ export default function CommunitySpringHome() {
               </div>
             </div>
           </div>
+          </div>
         </section>
 
         {/* Quick actions */}
@@ -117,7 +119,7 @@ export default function CommunitySpringHome() {
                   </span>
                   <span>
                     <span className="block font-serif text-lg font-semibold text-stone-900">{a.title}</span>
-                    <span className="mt-1 block text-sm text-stone-500">{a.desc}</span>
+                    <span className="mt-1 block text-sm text-stone-600">{a.desc}</span>
                   </span>
                 </Link>
               );
@@ -139,7 +141,7 @@ export default function CommunitySpringHome() {
                 {[["0", "Violations"], ["100%", "Standards met"], [org.membersServed, "Served"]].map(([k, v]) => (
                   <div key={v}>
                     <dt className="font-serif text-3xl font-semibold text-green-700">{k}</dt>
-                    <dd className="mt-0.5 text-sm text-stone-500">{v}</dd>
+                    <dd className="mt-0.5 text-sm text-stone-600">{v}</dd>
                   </div>
                 ))}
               </dl>
@@ -154,7 +156,7 @@ export default function CommunitySpringHome() {
             <h2 className="mt-1 font-serif text-3xl font-semibold tracking-tight text-stone-900 md:text-4xl">Rates &amp; fees</h2>
             <div className="mt-8 overflow-hidden rounded-3xl border border-amber-200 bg-white">
               <table className="w-full text-left text-sm">
-                <thead className="bg-lime-50 text-stone-500">
+                <thead className="bg-lime-50 text-stone-600">
                   <tr>
                     <th className="px-5 py-3.5 font-semibold">Charge</th>
                     <th className="hidden px-5 py-3.5 font-semibold sm:table-cell">Detail</th>
@@ -165,7 +167,7 @@ export default function CommunitySpringHome() {
                   {rates.map((r) => (
                     <tr key={r.label}>
                       <td className="px-5 py-3.5 font-medium text-stone-800">{r.label}</td>
-                      <td className="hidden px-5 py-3.5 text-stone-500 sm:table-cell">{r.detail}</td>
+                      <td className="hidden px-5 py-3.5 text-stone-600 sm:table-cell">{r.detail}</td>
                       <td className="px-5 py-3.5 text-right font-semibold text-green-700">{r.amount}</td>
                     </tr>
                   ))}
@@ -177,10 +179,10 @@ export default function CommunitySpringHome() {
 
         {/* Contact + final CTA */}
         <section id="contact" className="mx-auto max-w-6xl px-6 py-20">
-          <div className="flex flex-col items-start justify-between gap-10 rounded-[2rem] bg-green-700 p-10 text-white md:flex-row md:items-center md:p-14">
+          <div className="flex flex-col items-start justify-between gap-10 rounded-[2rem] bg-green-800 p-10 text-white md:flex-row md:items-center md:p-14">
             <div>
               <h2 className="font-serif text-3xl font-semibold md:text-4xl">Ready to pay your bill?</h2>
-              <p className="mt-2 max-w-sm text-green-100">Have your account number ready. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-white underline underline-offset-2">{org.phone}</a>.</p>
+              <p className="mt-2 max-w-sm text-green-50">Have your account number ready. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-white underline underline-offset-2">{org.phone}</a>.</p>
             </div>
             <Link href="/pay" className="inline-flex items-center gap-2.5 rounded-full bg-white px-9 py-5 text-xl font-bold text-green-700 shadow-lg transition hover:bg-lime-50">
               Pay My Bill <ArrowRightIcon className="h-6 w-6" />

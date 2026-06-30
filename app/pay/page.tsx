@@ -70,7 +70,7 @@ export default function CommunitySpringPortal() {
           <div className="relative mt-4 overflow-hidden rounded-3xl border border-amber-200 bg-white shadow-sm">
             {!loaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-white">
-                <span className="flex items-center gap-3 text-sm text-stone-500">
+                <span className="flex items-center gap-3 text-sm text-stone-600">
                   <span className="h-5 w-5 animate-spin rounded-full border-2 border-amber-200 border-t-green-700" />
                   Loading secure payment portal…
                 </span>
