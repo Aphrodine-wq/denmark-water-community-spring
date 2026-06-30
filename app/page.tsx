@@ -1,10 +1,13 @@
 import Link from "next/link";
-import { org, quickActions, waterQuality, rates, alertNotice } from "@/lib/content";
+import { org, quickActions, waterQuality, rates, alertNotice, leakCheck, boilWater, conservationTips, assistance, faqs } from "@/lib/content";
 import {
   PhoneIcon,
   MapPinIcon,
   ClockIcon,
   ArrowRightIcon,
+  CheckIcon,
+  LeakIcon,
+  ShieldIcon,
   quickActionIcon,
 } from "@/components/icons";
 
@@ -17,6 +20,7 @@ const nav = [
   { label: "Services", href: "#services" },
   { label: "Rates", href: "#rates" },
   { label: "Water Quality", href: "#quality" },
+  { label: "Help", href: "#resources" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -173,6 +177,74 @@ export default function CommunitySpringHome() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        </section>
+
+        {/* Helpful resources */}
+        <section id="resources" className="bg-white/60 py-16">
+          <div className="mx-auto max-w-6xl px-6">
+            <p className="text-sm font-semibold uppercase tracking-wide text-green-700">Member help</p>
+            <h2 className="mt-1 font-serif text-3xl font-semibold tracking-tight text-stone-900 md:text-4xl">Helpful for members</h2>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <div className="rounded-3xl border border-amber-200 bg-white p-7">
+                <h3 className="flex items-center gap-2 font-serif text-lg font-semibold text-stone-900">
+                  <LeakIcon className="h-5 w-5 text-green-700" /> {leakCheck.title}
+                </h3>
+                <p className="mt-2 text-sm text-stone-600">{leakCheck.intro}</p>
+                <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-stone-700 marker:font-semibold marker:text-green-700">
+                  {leakCheck.steps.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ol>
+                <p className="mt-4 text-xs text-stone-600">{leakCheck.note}</p>
+              </div>
+              <div className="rounded-3xl border border-amber-200 bg-white p-7">
+                <h3 className="flex items-center gap-2 font-serif text-lg font-semibold text-stone-900">
+                  <ShieldIcon className="h-5 w-5 text-green-700" /> {boilWater.title}
+                </h3>
+                <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-stone-700 marker:font-semibold marker:text-green-700">
+                  {boilWater.steps.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ol>
+                <p className="mt-4 text-xs text-stone-600">{boilWater.note}</p>
+              </div>
+            </div>
+            <div className="mt-6 rounded-3xl border border-amber-200 bg-white p-7">
+              <h3 className="font-serif text-lg font-semibold text-stone-900">Save water, save money</h3>
+              <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+                {conservationTips.map((t) => (
+                  <li key={t} className="flex items-start gap-2.5 text-sm text-stone-700">
+                    <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-green-700" /> {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-6 rounded-3xl bg-green-800 p-7 text-white">
+              <h3 className="flex items-center gap-2 font-serif text-lg font-semibold text-white">
+                <PhoneIcon className="h-5 w-5" /> {assistance.title}
+              </h3>
+              <p className="mt-2 text-sm text-green-50">{assistance.body}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="py-16">
+          <div className="mx-auto max-w-4xl px-6">
+            <p className="text-sm font-semibold uppercase tracking-wide text-green-700">Questions</p>
+            <h2 className="mt-1 font-serif text-3xl font-semibold tracking-tight text-stone-900 md:text-4xl">Frequently asked</h2>
+            <div className="mt-8 space-y-3">
+              {faqs.map((f) => (
+                <details key={f.q} className="group rounded-2xl border border-amber-200 bg-white p-5">
+                  <summary className="flex cursor-pointer list-none items-center justify-between font-serif text-lg font-medium text-stone-900">
+                    {f.q}
+                    <span className="text-green-700 transition group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-3 text-sm text-stone-600">{f.a}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
