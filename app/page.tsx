@@ -63,6 +63,18 @@ export default function CommunitySpringHome() {
         </div>
       </header>
 
+      {/* Mobile quick bar — tap-to-call + section nav (desktop gets the utility bar + full nav). */}
+      <div className="border-b border-amber-200 bg-white lg:hidden">
+        <div className="flex items-center gap-1 overflow-x-auto px-4 py-2 text-sm">
+          <a href={`tel:${org.phone}`} className="flex shrink-0 items-center gap-1.5 rounded-full bg-lime-100 px-3 py-1.5 font-semibold text-green-800">
+            <PhoneIcon className="h-4 w-4" /> Call office
+          </a>
+          {nav.filter((n) => n.href.startsWith("#")).map((n) => (
+            <a key={n.label} href={n.href} className="shrink-0 rounded-full px-3 py-1.5 font-medium text-stone-600">{n.label}</a>
+          ))}
+        </div>
+      </div>
+
       <main>
         {/* Hero */}
         <section className="relative isolate overflow-hidden">
@@ -168,7 +180,7 @@ export default function CommunitySpringHome() {
           <div className="flex flex-col items-start justify-between gap-10 rounded-[2rem] bg-green-700 p-10 text-white md:flex-row md:items-center md:p-14">
             <div>
               <h2 className="font-serif text-3xl font-semibold md:text-4xl">Ready to pay your bill?</h2>
-              <p className="mt-2 max-w-sm text-green-100">It takes about a minute. Questions? Call the office at {org.phone}.</p>
+              <p className="mt-2 max-w-sm text-green-100">It takes about a minute. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-white underline underline-offset-2">{org.phone}</a>.</p>
             </div>
             <Link href="/pay" className="inline-flex items-center gap-2.5 rounded-full bg-white px-9 py-5 text-xl font-bold text-green-700 shadow-lg transition hover:bg-lime-50">
               Pay My Bill <ArrowRightIcon className="h-6 w-6" />
@@ -180,7 +192,7 @@ export default function CommunitySpringHome() {
       <footer className="bg-green-800 py-8 text-green-100">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-sm md:flex-row">
           <span className="font-serif font-semibold text-white">{org.name}</span>
-          <span className="text-green-200">{org.address} · {org.phone}</span>
+          <span className="text-green-200">{org.address} · <a href={`tel:${org.phone}`} className="hover:text-white">{org.phone}</a></span>
           <span className="text-green-300">© {waterQuality.reportYear}</span>
         </div>
       </footer>
