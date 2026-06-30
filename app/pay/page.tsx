@@ -23,7 +23,7 @@ export default function CommunitySpringPortal() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-4xl px-5 py-10">
+      <main id="main" className="mx-auto max-w-4xl px-5 py-10">
         <div className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-green-700">
           <CardIcon className="h-4 w-4" /> Pay My Bill
         </div>
@@ -49,7 +49,7 @@ export default function CommunitySpringPortal() {
           >
             Open the EzPay payment portal <ArrowRightIcon className="h-5 w-5" />
           </a>
-          <p className="mt-2 text-center text-xs text-stone-500">Opens your secure payment page in a new tab.</p>
+          <p className="mt-2 text-center text-xs text-stone-600">Opens your secure payment page in a new tab.</p>
         </div>
 
         {/* DESKTOP — embedded portal with an always-visible new-tab fallback. */}
@@ -107,7 +107,7 @@ export default function CommunitySpringPortal() {
           </div>
         </section>
 
-        <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs text-stone-400">
+        <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs text-stone-600">
           <ShieldIcon className="h-4 w-4" /> Payments are securely processed by BBI EzPay.{" "}
           {org.shortName} never sees or stores your card or bank details.
         </p>
